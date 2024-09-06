@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let currentMonthIndex = 0;
     let currentYearIndex = 0;
-    let currentImage = 0; // 0 for initial image, 1 for image1, 2 for image2
+    let currentImage = 0;
 
     function updateMonthMenu() {
         monthMenu.textContent = months[currentMonthIndex];
@@ -23,21 +23,21 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateYearMenu() {
         yearMenu.textContent = years[currentYearIndex];
     }
-
+    
     function changeMonthAndYear(direction) {
         if (direction === 'left') {
-            currentMonthIndex = (currentMonthIndex - 1 + months.length) % months.length;
-            currentYearIndex = (currentYearIndex - 1 + years.length) % years.length;
-            currentImage = 1; // Set the current image to image1 when left arrow is pressed
+          currentMonthIndex = Math.floor(Math.random() * months.length);
+          currentYearIndex = Math.floor(Math.random() * years.length);
+          currentImage = 1;
         } else {
-            currentMonthIndex = (currentMonthIndex + 1) % months.length;
-            currentYearIndex = (currentYearIndex + 1) % years.length;
-            currentImage = 2; // Set the current image to image2 when right arrow is pressed
+          currentMonthIndex = Math.floor(Math.random() * months.length);
+          currentYearIndex = Math.floor(Math.random() * years.length);
+          currentImage = 2;
         }
         updateMonthMenu();
         updateYearMenu();
         toggleImage();
-    }
+      }
 
     function toggleImage() {
         if (currentImage === 0) {
